@@ -138,7 +138,7 @@ Run `pytest` in the project directory. This will execute api/test_app.py file.
 
 ## Notes about this project.
 ### Time
-In total about 5 hours is spent to build this project.
+In total about 6 hours is spent to build this project.
 
 ### Design Choices
 First of all, we need to store users in a database. Username, firstname, lastname can be stored in the database but not password, for security reasons. 
