@@ -1,6 +1,7 @@
 # Rest_Auth
 
-Restful Authentication API built-in Flask.
+Restful Authentication API built-in Flask. It allows to create user record with username, firstname, lastname and password fields.
+Plus, login/update/delete operations are also possible for users.
 
 ## Installation
 
