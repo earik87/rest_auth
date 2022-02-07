@@ -42,7 +42,7 @@ Then, from a different terminal window you can send requests.
 
 - GET **/api/users/update**
 
-    Return the updated user credentials.<br>
+    Update the user credentials.<br>
     This request must be authenticated using a HTTP Basic Authentication header. Username and password need to be provided.<br>
     On success, status code 201 and a JSON object with data for the updated user is returned.<br>
 
