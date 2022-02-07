@@ -29,22 +29,21 @@ Then, from a different terminal window you can send requests.
 - POST **/api/users**
 
     Register a new user.<br>
-    The body must contain a JSON object that defines `username` and `password` fields.<br>
-    On success a status code 201 is returned. The body of the response contains a JSON object with the newly added user.
+    The body must contain a JSON object that defines `username`, `firstname`, `lastname` and `password` fields.<br>
+    On success, a status code 201 is returned. The body of the response contains a JSON object with the newly added user.
     Notes:
     - The password is hashed before it is stored in the database. Once hashed, the original password is discarded.
 
 - GET **/api/resource**
 
     Return a protected resource. This checks if user is logged in.<br>This request must be authenticated using a HTTP Basic Authentication header. Username and password need to be provided.<br>
-    On success a JSON object with data for the authenticated user is returned.<br>
-    On failure status code 401 (unauthorized) is returned.
+    On success, status code 201 and a JSON object with data for the authenticated user is returned.<br>
 
 - GET **/api/users/update**
 
     Return the updated user credentials.<br>
     This request must be authenticated using a HTTP Basic Authentication header. Username and password need to be provided.<br>
-    On success a JSON object with data for the updated user is returned.<br>
+    On success, status code 201 and a JSON object with data for the updated user is returned.<br>
 
 - GET **/api/users/delete**
   
@@ -76,7 +75,7 @@ These credentials can now be used to access protected resources:
 
 ```
 $ curl -u enis87:python -i -X GET http://127.0.0.1:5000/api/resource
-HTTP/1.0 200 OK
+HTTP/1.0 201 OK
 Content-Type: application/json
 Content-Length: 31
 Server: Werkzeug/1.0.1 Python/3.10.0
