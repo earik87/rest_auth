@@ -1,6 +1,6 @@
-# Authentication-Service
+# Rest_Auth
 
-Restful Authentication with Flask.
+Restful Authentication API built-in Flask.
 
 ## Installation
 
@@ -131,3 +131,6 @@ Date: Sun, 06 Feb 2022 18:00:10 GMT
 The user is deleted!
 ```
 
+## Testing
+
+Run `pytest` in the project directory. This will execute api/test_app.py file.
