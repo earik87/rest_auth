@@ -135,3 +135,39 @@ The user is deleted!
 ## Testing
 
 Run `pytest` in the project directory. This will execute api/test_app.py file.
+
+## Notes about this project.
+### Time
+In total about 5 hours is spent to build this project.
+
+### Design Choices
+First of all, we need to store users in a database. Username, firstname, lastname can be stored in the database but not password, for security reasons. 
+Instead, we could store hashed password. For this, werkzeug library is used to generate hashed password. 
+For a given password; `python`. Hashed password would look something like this; 
+
+    pbkdf2:sha256:260000$82sUQEqVEkCFBmq4$3bcef45684e80be096d8d81bb881a18dcd0b662ac7cd14c55d411b7417200685
+
+If we break apart this long string;
+    Method $ Salt $ Hash
+
+Method defines the hashing method. Salt with 16 character provides a unique ID for the hashed password. The rest is hashed result of the password. Salt provides an extra layer that makes release of the passwords much more difficult by attackers. 
+
+Data Model. 
+
+ID | username | firstname | lastname | password_hash
+
+### Nice thing about this implementation
+- Password is never stored in the database. This will secure the passwords even if the database is broken by attackers.
+- Index on username will speed up the query on data readings. 
+
+### What can be improved
+- Appearently, there are better password security hash methods. Argon2 can be implemented to increase the security. 
+- Authentication just with a username and password combination might be risky, if one's password is compromised. To reduce this risk, two factor authentication could be implemented to this API. The user then must provide the password, plus a second authentication factor. This could be an access code sent into user's email, phone, or to another authenticator app. 
+
+### The things are missing to make it production-ready
+- To be able to handle load on this API, we need to think about scalability. Load balancer will be necessary to spread the load on API web servers.
+- Database Servers can be under heavy read/write request if millions of users are operating on it. Plus, database server should never be down. For this, several databases can be used. 
+One of them can be dedicated to write action(create - update - delete actions). Other servers can be used to read (for basically checking authorization - login). 
+Read servers will be replicated from Write server. If one of those servers is down, then others will be available. There will be no down time.
+Mostly active users can be analyzed and they can be placed into Cache. This will speed up their login time. 
+- Finally, a cloud environment could be used to provide this API server. 
