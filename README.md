@@ -40,7 +40,7 @@ Then, from a different terminal window you can send requests.
     Return a protected resource. This checks if user is logged in.<br>This request must be authenticated using a HTTP Basic Authentication header. Username and password need to be provided.<br>
     On success, status code 201 and a JSON object with data for the authenticated user is returned.<br>
 
-- GET **/api/users/update**
+- POST **/api/users/update**
 
     Update the user credentials.<br>
     This request must be authenticated using a HTTP Basic Authentication header. Username and password need to be provided.<br>
