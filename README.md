@@ -134,7 +134,7 @@ The user is deleted!
 
 ## Testing
 
-Run `pytest` in the project directory. This will execute api/test_app.py file.
+Run `pytest` in the project directory. This will execute api/test_api.py file.
 
 ## Notes about this project.
 ### Time
